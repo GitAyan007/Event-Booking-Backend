@@ -1,0 +1,20 @@
+const { Schema, Types, model, models} = require('mongoose');
+
+const userSchema = new Schema({
+    email:{
+        type: String,
+        required:true
+    },
+    password:{
+        type: String,
+        required:true,
+    },
+    createdEvents:[
+        {
+            type: Types.ObjectId,
+            ref: 'Event'
+        }
+    ]
+});
+
+module.exports = models.User || model("User", userSchema);
